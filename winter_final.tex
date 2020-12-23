@@ -10,6 +10,7 @@
 \usetikzlibrary{patterns}                 
 \usepackage{pgfplots}              
 \usepackage{circuitikz}
+\usepackage{bm}
             
 
 \usetikzlibrary{quotes,angles}
@@ -69,6 +70,13 @@
   \ensuremath{\xrightarrow{\text{Э}_3(#1,\; #2)}}%
 }
 
+\makeatletter
+\renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
+  \hskip -\arraycolsep
+  \let\@ifnextchar\new@ifnextchar
+  \array{#1}}
+\makeatother
+
 
 \title{Зимний экзамен учебного года 2019/2020\\Вариант \textnumero 1}
 \author{	
@@ -94,53 +102,271 @@
 
 \begin{document}
 	\maketitle
-
     \section*{Задача \textnumero 1}
-        % текст задачи
-        \begin{proof}[Решение.]
+      % текст задачи
+      \begin{proof}[Решение.]
 		
-        \end{proof}	 
+      \end{proof}	 
     
     \section*{Задача \textnumero 2}
-        % текст задачи
-	    \begin{proof}[Решение.]
-		
-        \end{proof}
+      % текст задачи
+      Найдите все комплексные решения уравнения $(2\sqrt{3} + i)z^4 = - 6\sqrt{3} + 10i$, у которых одиниз аргументов принадлежит интервалу $(3\pi,\, 7\pi/2)$.
+      \begin{proof}[Решение.]
+        Решим уравнение:
+        \begin{align*}
+          &\left( 2\sqrt{3} + i \right)z^4 = - 6\sqrt{3} + 10i \\
+          &z^4 = \frac{-6\sqrt{3}+10i}{2\sqrt{3} + i} = \frac{\left(2\sqrt{3}\right)\left( -6\sqrt{3} \right) + 10}{\left( 2\sqrt{3} \right)^2 + 1} + \frac{\left( 10 \cdot 2\sqrt{3} \right) - \left( -6\sqrt{3} \right)}{\left( 2\sqrt{3} \right)^2 + 1}i = \frac{-26}{13} + \frac{26\sqrt{3}}{13}i = -2 + 2\sqrt{3}i \\
+          &\big| z^4 \big| = \sqrt{(-2)^2 + \left( 2\sqrt{3} \right)^2} = \sqrt{16} = 4 \\
+          &\cos \varphi = \frac{-2}{4} = -\frac{1}{2}\quad \text{--- косинус аргумента}\\
+          &\sin \varphi = \frac{2\sqrt{3}}{4} = \frac{\sqrt{3}}{2} \quad \text{--- синус аргумента} \\
+          &\varphi = \frac{2\pi}{3} \quad \text{--- аргумент}\\
+          &z^4 = \big| z^4 \big| (\cos \varphi + i \sin \varphi) = 4\left( \cos \frac{2\pi}{3} + i \sin \frac{2\pi}{3} \right) \\
+          &\begin{aligned}
+            z = \sqrt[4]{4\left( \cos \frac{2\pi}{3} + i \sin \frac{2\pi}{3} \right)} = \sqrt[4]{4} \left( \cos \frac{2\pi/3 + 2\pi k}{4} + i \sin \frac{2\pi/3 + 2\pi k}{4} \right) = \sqrt{2} \left( \cos \left( \frac{\pi}{6} + \frac{\pi}{2} k \right) + i \sin \left( \frac{\pi}{6} + \frac{\pi}{2} k \right) \right), &\\
+            k = 0,\, 1,\, 2,\, 3 &
+          \end{aligned}
+        \end{align*}
+        Аргументам, принадлежащим интервалу $(3\pi,\, 7\pi/2)$, с отрезка $[0,\, 2\pi]$ соответствуют аргументы, принадлежащие объединению полуинтервалов $(\pi,\, 2\pi] \cup [0,\, \pi/2)$. Значит, нам подходят $k = 0, 2, 3$, так как $\frac{\pi}{6},\, \frac{7\pi}{6},\, \frac{10\pi}{6} \in (\pi,\, 2\pi] \cup [0,\, \pi/2)$ и $\frac{4\pi}{6} \notin (\pi,\, 2\pi] \cup [0,\, \pi/2)$.
+
+        Тогда решения уравнения с аргументом, лежащим в интервале $(3\pi,\, 7\pi/2)$ ~--- комплексные числа $\sqrt{2} \left( \cos \frac{\pi}{6} + i \sin \frac{\pi}{6} \right) =\sqrt{2} \left( \frac{\sqrt{3}}{2} + i \frac{1}{2} \right) = \bm{\frac{\sqrt{3}}{\sqrt{2}} + i\frac{\sqrt{2}}{2}}$, $\sqrt{2} \left( \cos \frac{7\pi}{6} + i \sin \frac{7\pi}{6} \right) =\sqrt{2} \left( -\frac{\sqrt{3}}{2} - i \frac{1}{2} \right) = \bm{-\frac{\sqrt{3}}{\sqrt{2}} - i\frac{\sqrt{2}}{2}}$ и $\sqrt{2} \left( \cos \frac{10\pi}{6} + i \sin \frac{10\pi}{6} \right) =\sqrt{2} \left( \frac{1}{2} - i \frac{\sqrt{3}}{2} \right) = \bm{\frac{\sqrt{2}}{2} - i\frac{\sqrt{3}}{\sqrt{2}}}$.
+
+      \end{proof}
     
     \section*{Задача \textnumero 3}
-        % текст задачи
+      % текст задачи
 	    \begin{proof}[Решение.]
 		
-        \end{proof}
+      \end{proof}
     
     \section*{Задача \textnumero 4}
-        % текст задачи
+      % текст задачи
+      Пусть $A = \begin{pmatrix}
+        1 & 2 & 0 \\
+        0 & -1 & 3
+      \end{pmatrix}$. Докажите, что множество всех матриц $X \in \Mat_{2 \times 3}(\RR)$, удовлетворяющих условию $XA^T + AX^T = 0$, является подпространством в пространстве $\Mat_{2 \times 3}(\RR)$; найдите базис и размерность этого подпространства.
 	    \begin{proof}[Решение.]
-		
-        \end{proof}
+        Заметим, что $XA^T = (AX^T)^T$, тогда уравнение можно переписать так:
+        \begin{equation*}
+          (AX^T)^T + AX^T = 0.
+        \end{equation*}
+        Проверим множества решений $U$ на условия подпространства:
+        \begin{enumerate}
+          \item $(A \cdot 0^T)^T + A \cdot 0^T = 0 \implies 0 \in U$
+          \item $Y,\, Z \in U \implies (A(Y + Z)^T)^T + A(Y + Z)^T = \underbrace{(AY^T)^T + AY^T}_0 + \underbrace{(AZ^T)^T + AZ^T}_0 = 0 \implies Y+Z \in U$
+          \item $Y \in U,\, \alpha \in \RR \implies (A(\alpha Y)^T)^T + A (\alpha Y)^T = \alpha (\underbrace{(AY^T)^T + AY^T}_0) = 0$
+        \end{enumerate}
+        Значит, $U$~--- подпространство в $\Mat_{2\times 3}(\RR)$.
+
+        $AX^T$~--- это некоторая матрица размера $2 \times 2$, которая в сложении с собой транспонированной даёт ноль. У такой матрицы $[AX^T]_{ij} = -[AX^T]{ji}$, то есть диагональные элементы нулевые, а остальные противоположны с симметричным. Запишем это условие:
+        \begin{equation*}
+          AX^T = \begin{pmatrix}
+            1 & 2 & 0 \\
+            0 & -1 & 3
+          \end{pmatrix} \begin{pmatrix}
+            x_1 & x_4 \\
+            x_2 & x_5 \\
+            x_3 & x_6
+          \end{pmatrix} = \begin{pmatrix}
+            x_1 + 2x_2 & x_4 + 2x_5 \\
+            -x_2 + 3x_3 & -x_5 + 3x_6
+          \end{pmatrix} \implies \begin{dcases}
+            x_1 + 2x_2 = 0\\
+            x_4 + 2x_5 + x_2 - 3x_3 = 0\\
+            -x_5 + 3x_6 = 0
+          \end{dcases}
+        \end{equation*}
+        Решим ОСЛУ от переменных $x_1,\dots , x_6$:
+        \begin{multline*}
+          \smt{cccccc|c}{
+            1 & 2 & 0 & 0 & 0 & 0 & 0 \\
+            0 & 1 & -3 & 1 & 2 & 0 & 0 \\ 
+            0 & 0 & 0 & 0 & -1 & 3 & 0
+          } \overset{\elth{3}{-1}}{\arron{1}{2}{-2}} \smt{cccccc|c}{
+            1 & 0 & 6 & -2 & -4 & 0 & 0 \\
+            0 & 1 & -3 & 1 & 2 & 0 & 0 \\
+            0 & 0 & 0 & 0 & 1 & -3 & 0
+          } \overset{\elon{1}{3}{4}}{\arron{2}{3}{-2}} \\
+          \overset{\elon{1}{3}{4}}{\arron{2}{3}{-2}} \smt{cccccc|c}{
+            1 & 0 & 6 & -2 & 0 & -12 & 0 \\
+            0 & 1 & -3 & 1 & 0 & 6 & 0 \\
+            0 & 0 & 0 & 0 & 1 & -3 & 0
+          }
+        \end{multline*}
+        Общее решение выводится несложно, но оно нам не нужно. Нам нужно ФСР. Оно будет содержать три вектора и выглядеть следующим образом: 
+        \begin{equation*}
+          v_1 = \begin{pmatrix}
+            -6 \\
+            3 \\
+            1 \\
+            0 \\
+            0 \\
+            0 \\
+          \end{pmatrix},\ v_2 = \begin{pmatrix}
+            2 \\
+            -1 \\
+            0 \\
+            1 \\
+            0 \\
+            0
+          \end{pmatrix},\ v_3 = \begin{pmatrix}
+            12 \\
+            -6 \\
+            0 \\
+            0 \\
+            3 \\
+            1
+          \end{pmatrix}.
+        \end{equation*}
+        Тогда базис нашего пространства $U$~--- это матрицы 
+        \begin{equation*}
+          \bm{X_1} = \begin{pmatrix}
+            \bm{-6} & \bm{3} & \bm{1} \\
+            \bm{0} & \bm{0} & \bm{0}
+          \end{pmatrix},\ \bm{X_2} = \begin{pmatrix}
+            \bm{2} & \bm{-1} & \bm{0} \\
+            \bm{1} & \bm{0} & \bm{0}
+          \end{pmatrix},\ \bm{X_3} = \begin{pmatrix}
+            \bm{12} & \bm{-6} & \bm{0} \\
+            \bm{0} & \bm{3} & \bm{1}
+          \end{pmatrix},
+        \end{equation*}
+        а его размерность (размер базиса)~--- $\bm{3}$.
+
+      \end{proof}
     
     \section*{Задача \textnumero 5}
-        % текст задачи
+      % текст задачи
 	    \begin{proof}[Решение.]
 		
-        \end{proof}
+      \end{proof}
 
     \section*{Задача \textnumero 6}
-        % текст задачи
+      % текст задачи
+      Существует ли однородная система линейных уравнений, для которой векторы $v_1 =(0,\, -1,\, -1,\, 1,\, 0)$, $v_2 = (1,\, 2,\, 2,\, 0,\, 0)$, $v_3 = (1,\, 0,\, 2,\, 0,\, 2)$ образуют фундаментальную систему решений? Если существует, то укажите её.
 	    \begin{proof}[Решение.]
-		
-        \end{proof}
+        Для начала проверим, что векторы $v_1,\, v_2$ и $v_3$ линейно независимы. Для этого запишем их в столбцы матрицы и приведём её к ступенчатому виду.
+        \begin{multline*}
+          \begin{pmatrix}
+            0 & 1 & 1 \\
+            -1 & -1 & -1 \\
+            -1 & 2 & 2 \\
+            1 & 0 & 0 \\
+            0 & 0 & 2
+          \end{pmatrix} \arrtw{1}{2} \begin{pmatrix}
+            -1 & -1 & -1 \\
+            0 & 1 & 1 \\
+            -1 & 2 & 2 \\
+            1 & 0 & 0 \\
+            0 & 0 & 2
+          \end{pmatrix} \overset{\elon{4}{1}{1}}{\arron{3}{1}{-1}} \begin{pmatrix}
+            -1 & -1 & -1 \\
+            0 & 1 & 1 \\
+            0 & 3 & 3 \\
+            0 & -1 & -1 \\
+            0 & 0 & 2
+          \end{pmatrix} \overset{\elon{4}{2}{1}}{\arron{3}{2}{-3}} \begin{pmatrix}
+            -1 & -1 & -1 \\
+            0 & 1 & 1 \\
+            0 & 0 & 0 \\
+            0 & 0 & 0 \\
+            0 & 0 & 2
+          \end{pmatrix} \arrtw{3}{5} \\
+          \arrtw{3}{5} \left(
+            \begin{tabular}{ccc}
+            \multicolumn{1}{|c}{$-1$} & $-1$                     & $-1$ \\ \cline{1-1}
+            \multicolumn{1}{c|}{$0$}  & $1$                      & $1$  \\ \cline{2-2}
+            $0$                       & \multicolumn{1}{c|}{$0$} & $2$  \\ \cline{3-3} 
+            $0$                       & $0$                      & $0$  \\
+            $0$                       & $0$                      & $0$ 
+            \end{tabular}\right)
+        \end{multline*}  
+        Действительно, эти векторы линейно независимы. В таком случае мы точно можем сказать, что существует ОСЛУ, для которой $v_1,\, v_2,\, v_3$ являются ФСР, так как у нас есть алгоритм, по которому эта ОСЛУ строится. Воспользуемся им.
+        \begin{enumerate}
+          \item Уложим векторы $v_1,\, v_2,\, v_3$ в строки матрицы $B \in \Mat_{3 \times 5}(\RR)$. Матрица $B$ будет выглядеть так:
+          \begin{equation*}
+            B = \begin{pmatrix}
+              0 & -1 & -1 & 1 & 0 \\
+              1 & 2 & 2 & 0 & 0 \\
+              1 & 0 & 2 & 0 & 2
+            \end{pmatrix}
+          \end{equation*}
+          \item Найдём ФСР системы $Bz = 0$:
+          \begin{multline*}
+            \smt{ccccc|c}{
+              0 & -1 & -1 & 1 & 0 & 0 \\
+              1 & 2 & 2 & 0 & 0 & 0 \\
+              1 & 0 & 2 & 0 & 2 & 0
+            } \arrtw{1}{2} \smt{ccccc|c}{
+              1 & 2 & 2 & 0 & 0 & 0 \\
+              0 & -1 & -1 & 1 & 0 & 0 \\
+              1 & 0 & 2 & 0 & 2 & 0
+            } \arron{3}{1}{-1} \smt{ccccc|c}{
+              1 & 2 & 2 & 0 & 0 & 0 \\
+              0 & -1 & -1 & 1 & 0 & 0 \\
+              0 & -2 & 0 & 0 & 2 & 0
+            } \arron{3}{2}{-2} \\ 
+            \arron{3}{2}{-2} \smt{ccccc|c}{
+              1 & 2 & 2 & 0 & 0 & 0 \\
+              0 & -1 & -1 & 1 & 0 & 0 \\
+              0 & 0 & 2 & -2 & 2 & 0
+            } \overset{\elth{2}{-1}}{\arrth{3}{1/2}} \smt{ccccc|c}{
+              1 & 2 & 2 & 0 & 0 & 0 \\
+              0 & 1 & 1 & -1 & 0 & 0 \\
+              0 & 0 & 1 & -1 & 1 & 0
+            } \arron{1}{2}{-2} \smt{ccccc|c}{
+              1 & 0 & 0 & 2 & 0 & 0 \\
+              0 & 1 & 1 & -1 & 0 & 0 \\
+              0 & 0 & 1 & -1 & 1 & 0
+            } \to\\
+            {\arron{2}{3}{-1}} \smt{ccccc|c}{
+              1 & 0 & 0 & 2 & 0 & 0 \\
+              0 & 1 & 0 & 0 & -1 & 0 \\
+              0 & 0 & 1 & -1 & 1 & 0
+            }
+          \end{multline*}
+          Дальше легко восстановить решение ОСЛУ, но нас интересует ФСР. Она будет выглядеть следующим образом:
+          \begin{equation*}
+            u_1 = \begin{pmatrix}
+              -2 \\
+              0 \\
+              1 \\
+              1 \\
+              0
+            \end{pmatrix},\ u_2 = \begin{pmatrix}
+              0 \\
+              1 \\
+              -1 \\
+              0 \\
+              1
+            \end{pmatrix}
+          \end{equation*}
+          \item Уложим ФСР в строки матрицы $A \in \Mat_{2 \times 5}(\RR)$. Матрица $A$ будет матрицей искомой ОСЛУ и будет выглядеть так:
+          \begin{equation*}
+            A = \begin{pmatrix}
+              -2 & 0 & 1 & 1 & 0 \\
+              0 & 1 & -1 & 0 & 1
+            \end{pmatrix}
+          \end{equation*}
+        \end{enumerate}
+        Не забываем, что нас просили найти не матрицу, а саму ОСЛУ. Запишем её:
+        \begin{equation*}
+          \begin{cases}
+            \bm{-2x_1 + x_3 + x_4 = 0} \\
+            \bm{x_2 - x_3 + x_5 = 0}
+          \end{cases}
+        \end{equation*} 
+      \end{proof}
 
     \section*{Задача \textnumero 7}
-        % текст задачи
+      % текст задачи
 	    \begin{proof}[Решение.]
 		
-        \end{proof}
+      \end{proof}
 
     \section*{Задача \textnumero 8}
-        % текст задачи
+      % текст задачи
 	    \begin{proof}[Решение.]
 		
-        \end{proof}
+      \end{proof}
  	
 \end{document}
