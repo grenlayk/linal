@@ -92,10 +92,100 @@
 \begin{document}
 	\maketitle
     \section*{Задача \textnumero 1}
-        % текст задачи
-        Рассмотрим \dots
+        Рассмотрим линейное отображение $\varphi: \RR^4 \to \RR^3$, $v \mapsto Av$, где
+        \begin{equation*}
+          A = \begin{pmatrix}
+            3 & -1 & 3 & 7 \\
+            2 & -1 & 1 & 4 \\
+            -1 & 3 & 7 & 3
+          \end{pmatrix}.
+        \end{equation*}
+        Найдите базис $\mathbbm{e}$ пространства $\RR^4$ и базис $\mathbbm{f}$ пространства $\RR^3$, в которых $\varphi$ имеет диагональный вид с единицами и нулями на диагонали, и выпишите этот вид.
         \begin{proof}[Решение.]
-                
+        Будем пользоваться стандартным алгоритмом. Найдём сначала базис $\ker \varphi$~--- это ФСР ОСЛУ $Ax = 0$. Приводим $A$ к улучшенному ступенчатому виду:
+        \begin{multline*}
+          \begin{pmatrix}
+            3 & -1 & 3 & 7 \\
+            2 & -1 & 1 & 4 \\
+            -1 & 3 & 7 & 3
+          \end{pmatrix} \overset{\elon{2}{3}{2}}{\arron{1}{3}{3}} \begin{pmatrix}
+            0 & 8 & 24 & 16 \\
+            0 & 5 & 15 & 10 \\
+            -1 & 3 & 7 & 3 
+          \end{pmatrix} \arron{1}{2}{-8/5} \begin{pmatrix}
+            0 & 0 & 0 & 0 \\
+            0 & 5 & 15 & 10 \\
+            -1 & 3 & 7 & 3 
+          \end{pmatrix} \overset{\elth{2}{1/5}}{\arrtw{1}{3}} \begin{pmatrix}
+            -1 & 3 & 7 & 3 \\
+            0 & 1 & 3 & 2 \\
+            0 & 0 & 0 & 0
+          \end{pmatrix} \\ \arron{1}{2}{-3} \begin{pmatrix}
+            -1 & 0 & -2 & -3 \\
+            0 & 1 & 3 & 2 \\
+            0 & 0 & 0 & 0
+          \end{pmatrix} \arrth{1}{-1} \begin{pmatrix}
+            1 & 0 & 2 & 3 \\
+            0 & 1 & 3 & 2 \\
+            0 & 0 & 0 & 0
+          \end{pmatrix}
+        \end{multline*}
+        Тогда искомая ФСР~--- векторы
+        \begin{equation*}
+          e_3 = \begin{pmatrix}
+            -2 \\
+            -3 \\
+            1 \\
+            0
+          \end{pmatrix}, \quad e_4 = \begin{pmatrix}
+            -3 \\
+            -2 \\
+            0 \\ 
+            1
+          \end{pmatrix}
+        \end{equation*}
+        Очевидно, что эту систему векторов можно дополнить до базиса $\RR^4$ векторами 
+        \begin{equation*}
+          e_1 = \begin{pmatrix}
+            1 \\
+            0 \\
+            0 \\
+            0
+          \end{pmatrix}, \quad e_2 = \begin{pmatrix}
+            0 \\
+            1 \\
+            0 \\ 
+            0
+          \end{pmatrix}
+        \end{equation*}
+        Теперь заметим, что (по определению матрицы линейного отображения) $Ae_1 = A^{(1)},\, Ae_2 = A^{(2)}$. Тогда скажем, что $f_1 = A^{(1)},\, f_2 = A^{(2)}$~--- это будет базисом $\Im \varphi$. Осталось дополнить $f_1,\, f_2$ до базиса $\RR^3$:
+        \begin{equation*}
+          \begin{pmatrix}
+            3 & 2 & -1 \\
+            -1 & -1 & 3
+          \end{pmatrix} \arron{1}{2}{3}
+          \begin{pmatrix}
+            0 & -1 & 8 \\
+            -1 & -1 & 3
+          \end{pmatrix} \arrtw{1}{2}
+          \begin{pmatrix}
+            -1 & -1 & 3 \\ 
+            0 & -1 & 8
+          \end{pmatrix}
+        \end{equation*}
+        Видим, что вектор $
+          f_3 = \begin{pmatrix}
+            0 \\
+            0 \\
+            1  
+          \end{pmatrix}$ дополняет $f_1,\, f_2$ до базиса $\RR^3$. Тогда по доказанному на лекции матрица линейного отображения $\varphi$ в базисах $\mathbbm{e},\, \mathbbm{f}$ принимает вид:
+          \begin{equation*}
+            A(\varphi,\, \mathbbm{e},\, \mathbbm{f}) = \begin{pmatrix}
+              1 & 0 & 0 & 0\\
+              0 & 1 & 0 & 0 \\
+              0 & 0 & 0 & 0
+            \end{pmatrix}.
+          \end{equation*}
         \end{proof}	 
     
     \section*{Задача \textnumero 2}
@@ -113,10 +203,141 @@
         \end{proof}
       
     \section*{Задача \textnumero 4}
-        % текст задачи
-        В евклидовом \dots
+        В евклидовом пространстве $\RR^4$ даны два подпространства $U = \langle u_1,\, u_2 \rangle$ и $W = \langle w_1,\, w_2 \rangle$, где $u_1 = (2, -1, 2, -1),\, u_2 = (3, -3, 1, 1), w_1 = (1, 2, -1, 2),\, w_2 = (1, -3, 3, -1)$. Найдите вектор $v \in \RR^4$, для которого $\pr_U v = (9, -12, -1, 8)$ и $\ort_W v = (1, -8, -7, 4)$.
         \begin{proof}[Решение.]
-            
+        Для начала найдём базис $U^\bot$~--- это ФСР ОСЛУ $\begin{pmatrix}
+          u_1 \\
+          u_2
+        \end{pmatrix}x = 0$. Применяем Гаусса:
+        \begin{multline*}
+          \begin{pmatrix}
+            2 & -1 & 2 & -1 \\
+            3 & -3 & 1 & 1
+          \end{pmatrix} \arrth{2}{2} 
+          \begin{pmatrix}
+            2 & -1 & 2 & -1 \\
+            6 & -6 & 2 & 2
+          \end{pmatrix} \arron{2}{1}{-3}
+          \begin{pmatrix}
+            2 & -1 & 2 & -1 \\
+            0 & -3 & -4 & 5
+          \end{pmatrix} \arrth{1}{3}
+          \begin{pmatrix}
+            6 & -3 & 6 & -3 \\
+            0 & -3 & -4 & 5
+          \end{pmatrix} \\ \arron{1}{2}{-1}
+          \begin{pmatrix}
+            6 & 0 & 10 & -8 \\
+            0 & -3 & -4 & 5
+          \end{pmatrix} \overset{\elth{2}{-1/3}}{\arrth{1}{1/6}}
+          \begin{pmatrix}
+            1 & 0 & 5/3 & -4/3 \\
+            0 & 1 & 4/3 & -5/3
+          \end{pmatrix}
+        \end{multline*}
+        Тогда ФСР~--- это векторы
+        \begin{equation*}
+          u_1^\bot = \begin{pmatrix}
+            -5 \\
+            -4 \\
+            3 \\
+            0
+          \end{pmatrix}, \quad u_2^\bot = \begin{pmatrix}
+            4 \\
+            5 \\
+            0 \\
+            3
+          \end{pmatrix}.
+        \end{equation*}
+        Тогда знаем, что $\exists a,\, b,\, c,\, d \in \RR$, такие что $\begin{dcases}
+          v = \pr_U v + au_1^\bot + bu_2^\bot \\
+          v = \ort_W v + cw_1 + dw_2
+        \end{dcases}$.
+        Вычтем второе уравнение из первого и получим, что $\ort_W v - \pr_U v = au_1^\bot + bu_2^\bot - cw_1 - dw_2$. Посчитаем $\ort_W v - \pr_U v$:
+        \begin{equation*}
+          \begin{pmatrix}
+            1 & -8 & -7 & 4
+          \end{pmatrix} - \begin{pmatrix}
+            9 & -12 & -1 & 8
+          \end{pmatrix} = \begin{pmatrix}
+            -8 & 4 & -6 & -4
+          \end{pmatrix}.
+        \end{equation*}
+        Теперь решаем СЛУ:
+        \begin{multline*}
+          \smt{rrrr|r} {
+            -5 & 4 & -1 & -1 & -8 \\ 
+            -4 & 5 & -2 & 3 & 4 \\ 
+            3 & 0 & 1 & -3 & -6 \\ 
+            0 & 3 & -2 & 1 & -4 \\ 
+          } \overset{\elth{2}{3}}{\arrth{1}{3}} 
+          \smt{rrrr|r} {
+            -15 & 12 & -3 & -3 & -24 \\ 
+            -12 & 15 & -6 & 9 & 12 \\ 
+            3 & 0 & 1 & -3 & -6 \\ 
+            0 & 3 & -2 & 1 & -4 \\ 
+          } \overset{\elon{2}{3}{4}}{\arron{1}{3}{5}}
+          \smt{rrrr|r} {
+            0 & 12 & 2 & -18 & -54 \\ 
+            0 & 15 & -2 & -3 & -12 \\ 
+            3 & 0 & 1 & -3 & -6 \\ 
+            0 & 3 & -2 & 1 & -4 \\ 
+          } \\ \overset{\elon{1}{4}{-4}}{\arron{2}{4}{-5}}
+          \smt{rrrr|r} {
+            0 & 0 & 10 & -22 & -38 \\ 
+            0 & 0 & 8 & -8 & 8 \\ 
+            3 & 0 & 1 & -3 & -6 \\ 
+            0 & 3 & -2 & 1 & -4 \\ 
+          } \arrth{2}{1/8}
+          \smt{rrrr|r} {
+            0 & 0 & 10 & -22 & -38 \\ 
+            0 & 0 & 1 & -1 & 1 \\ 
+            3 & 0 & 1 & -3 & -6 \\ 
+            0 & 3 & -2 & 1 & -4 \\ 
+          } \overset{\elon{4}{2}{2}}{\overset{\elon{3}{2}{-1}}{\arron{1}{2}{-10}}}
+          \smt{rrrr|r} {
+            0 & 0 & 0 & -12 & -48 \\ 
+            0 & 0 & 1 & -1 & 1 \\ 
+            3 & 0 & 0 & -2 & -7 \\ 
+            0 & 3 & 0 & -1 & -2 \\ 
+          } \\ \overset{\eltw{3}{4}}{\arrth{1}{-1/12}}
+          \smt{rrrr|r} {
+            0 & 0 & 0 & 1 & 4 \\ 
+            0 & 0 & 1 & -1 & 1 \\ 
+            0 & 3 & 0 & -1 & -2 \\ 
+            3 & 0 & 0 & -2 & -7 \\ 
+          } \overset{\elon{4}{1}{2}}{\overset{\elon{3}{1}{1}}{\arron{2}{1}{1}}}
+          \smt{rrrr|r} {
+            0 & 0 & 0 & 1 & 4 \\ 
+            0 & 0 & 1 & 0 & 5 \\ 
+            0 & 3 & 0 & 0 & 2 \\ 
+            3 & 0 & 0 & 0 & 1 \\ 
+          } \overset{\eltw{1}{4}}{\arrtw{2}{3}}
+          \smt{rrrr|r} {
+            3 & 0 & 0 & 0 & 1 \\ 
+            0 & 3 & 0 & 0 & 2 \\ 
+            0 & 0 & 1 & 0 & 5 \\ 
+            0 & 0 & 0 & 1 & 4 \\ 
+          }
+        \end{multline*}
+        Отсюда уже видно, что решение уравнения: $
+          \begin{dcases}
+            a = 1/3 \\
+            b = 2/3 \\
+            c = 5 \\
+            d = 4
+          \end{dcases}$. Осталось только найти $v$. $c$ и $d$ получились целые, поэтому найдём по формуле $v = \ort_W v - cw_1 - dw_2$:
+          \begin{equation*}
+            \bm{v} = \begin{pmatrix}
+              1 & -8 & -7 & 4
+            \end{pmatrix} - 5\begin{pmatrix}
+              1 & 2 & -1 & 2
+            \end{pmatrix} - 4\begin{pmatrix}
+              1 & -3 & 3 & -1
+            \end{pmatrix} = \begin{pmatrix}
+              \bm{-8} & \bm{-6} & \bm{-14} & \bm{-2}
+            \end{pmatrix}.
+          \end{equation*}
         \end{proof}
     
     \section*{Задача \textnumero 5}
