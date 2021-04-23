@@ -127,7 +127,11 @@
               \end{matrix}\right)$
               \item Теперь посмотрим, что будет, если применить каждую из альф к
               многочлену $f$, имеющему в базисе из условия координаты $a, b, c$.
-              \item $\alpha_1(f) = (1 1 0)\left(\begin{matrix}
+              \item $\alpha_1(f) = 
+              \begin{pmatrix}
+                1 & 1 & 0
+                \end{pmatrix}
+                \left(\begin{matrix}
                   1 & 0 & 1 \\
                   0 & 1 & 0 \\
                   1 & 3 & 2 \\ 
@@ -135,12 +139,20 @@
                   a \\
                   b\\
                   c \\  
-              \end{matrix}\right) = (1 1 1) \left(\begin{matrix}
+              \end{matrix}\right) = 
+              \begin{pmatrix}
+                1 & 1 & 1
+                \end{pmatrix}
+                \left(\begin{matrix}
                   a \\
                   b\\
                   c\\  
               \end{matrix}\right) = a + b + c$
-              \item  $\alpha_2(f) = (0 -2 1)\left(\begin{matrix}
+              \item  $\alpha_2(f) = 
+              \begin{pmatrix}
+                0 & -2 & 1
+                \end{pmatrix}
+                \left(\begin{matrix}
                 1 & 0 & 1 \\
                 0 & 1 & 0 \\
                 1 & 3 & 2 \\ 
@@ -148,12 +160,20 @@
                 a \\
                 b\\
                 c \\  
-            \end{matrix}\right) = (1 1 2) \left(\begin{matrix}
+            \end{matrix}\right) = 
+            \begin{pmatrix}
+                1& 1 & 2
+                \end{pmatrix}
+             \left(\begin{matrix}
                 a \\
                 b\\
                 c\\  
             \end{matrix}\right) = a + b + 2c$
-            \item  $\alpha_3(f) = (0 1 0)\left(\begin{matrix}
+            \item  $\alpha_3(f) = 
+            \begin{pmatrix}
+            0 & 1 & 0
+            \end{pmatrix}
+            \left(\begin{matrix}
               1 & 0 & 1 \\
               0 & 1 & 0 \\
               1 & 3 & 2 \\ 
@@ -161,7 +181,11 @@
               a \\
               b\\
               c \\  
-          \end{matrix}\right) = (0 1 0) \left(\begin{matrix}
+          \end{matrix}\right) = 
+          \begin{pmatrix}
+            0 & 1 & 0
+            \end{pmatrix}
+            \left(\begin{matrix}
               a \\
               b\\
               c\\  
@@ -182,24 +206,25 @@
       \end{matrix}\right)$ соответственно.
       \item Тогда из условия, которое я выписала первым пунктом, и из
       результатов применения альф следует: 
+
       $\begin{cases}
-          a_1 + b_1 + c_1 = 1
-          a_1 + b_1 + 2c_1 = 0
-          b_1 = 0
+          a_1 + b_1 + c_1 = 1 \\
+          a_1 + b_1 + 2c_1 = 0 \\
+          b_1 = 0 \\
       \end{cases} \Rightarrow a_1 = 2, b_1 = 0, c_1 = -1$ \\
       $\begin{cases}
-        a_2 + b_2 + c_2 = 0
-        a_2 + b_2 + 2c_2 = 1
-        b_2 = 0
+        a_2 + b_2 + c_2 = 0 \\
+        a_2 + b_2 + 2c_2 = 1 \\
+        b_2 = 0 \\ 
     \end{cases} \Rightarrow a_2 = -1, b_2 = 0, c_2 = 1$ \\
     $\begin{cases}
-      a_3 + b_3 + c_3 = 0
-      a_3 + b_3 + 2c_3 = 0
-      b_3 = 1
+      a_3 + b_3 + c_3 = 0 \\
+      a_3 + b_3 + 2c_3 = 0 \\
+      b_3 = 1 \\ 
   \end{cases} \Rightarrow a_3 = -1, b_3 = 1, c_3 = 0$ 
   \item А теперь вспоминаем, что это координаты в базисе из условия и выписываем
-  наши векторы (не путаем порядок): $f_1 = 2 - 2x^2 - x -2x^2 = 2 - x -4x^2,
-  f_2 = -1 + x^2  + x + 2x^2 = -1 + x + 3x^2,
+  наши векторы (не путаем порядок): $f_1 = 2 - 2x^2 - x -2x^2 = 2 - x -4x^2, \\
+  f_2 = -1 + x^2  + x + 2x^2 = -1 + x + 3x^2, \\
   f_3 = -1 + x^2 + x^2 = -1 + 2x^2$ 
           \end{itemize}
         \end{proof}
@@ -236,16 +261,19 @@
               хотим найти $detG(v_1', v_2', v_3')$.
               \item Для краткости обозначим $G := G(v_1, v_2, v_3)$, $G' := G(v_1', v_2', v_3')$.
               \item Утверждение: Пусть $u_1, \ldots, u_k$ -- некоторая система векторов 
-              евклидова пространства $E$, и пусть $G$ -- её матрица Грамма. Предположим, что
+              евклидова пространства $E$, и пусть $G$ -- её матрица Грама. Предположим, что
               векторы $u_1', \ldots, u_l' \in E$ выражаются через $u_1, \ldots, u_k$; тогда
               можно записать $(u_1', \ldots, u_l') = (u_1, \ldots, u_k)C$ для некоторой матрицы
-              $C \in Mat_{k \times l}(\mathbb{R})$. Тогда матрица Грамма системы векторов
+              $C \in Mat_{k \times l}(\mathbb{R})$. Тогда матрица Грама системы векторов
               $(u_1', \ldots, u_l')$ равна $C^TGC$. \\
               
               Докажем: $\displaystyle (u_i', u_j') = (\sum_{p = 1}^k c_{pi}v_p, \sum_{q = 1}^k c_{qj}v_q) =
               \sum_{p = 1}^k \sum_{q = 1}^k c_{pi} (v_p, v_q) c_{qj} =
                \sum_{p = 1}^k \sum_{q = 1}^k [C^T]_{ip} G_{pq} c_{qj} \Rightarrow
-                G(u_1', \ldots, u_l') = C^TGC$.
+                G(u_1', \ldots, u_l') = C^TGC$. 
+            \begin{remark*}
+                На контрольной можно это не доказывать.
+            \end{remark*}
               \item Хочу отдельно обратить ваше внимание на то, что ни первая ни вторая система не
               обязаны быть линейно независимыми. То есть, мы буквально никаких условий на векторы
               системы не накладываем (кроме, конечно, выразимости одной через другую). 
@@ -308,6 +336,11 @@
             (по свойству определителя) $ = det(C)^2det(G)$.
             \item $detG$ мы нашли в самом начале решения, осталось найти $det(C)$ (с вашего позволения,
             упущу счёт). $detC = \dfrac{5}{2}$.
+            \begin{remark*}
+                Так как матрицы $(v_1', v_2', v_3')$, $(v_1, v_2, v_3)$ и $C$ невырожденные квадратные, то 
+                $\det V' = det V \cdot \det C \Rightarrow \det C = \frac{\det V'}{det V}$ и можно было
+                 не искать $C$ в явном виде.
+            \end{remark*}
             \item Итого: $detG' = \dfrac{25}{4} \cdot 16 = 100 \Rightarrow
             VolP(v_1','v_2','v_3') = \sqrt{100} = 10$. 
           \end{itemize}
