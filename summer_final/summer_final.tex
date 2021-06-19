@@ -1,0 +1,214 @@
+\documentclass[a4paper]{article}
+\usepackage{header}
+\newcommand{\Mat}{\operatorname{Mat}}
+\newcommand{\M}{\operatorname{M}}
+\allowdisplaybreaks
+
+%% Графика
+\usepackage{graphicx}       
+\graphicspath{{images/}}            
+\usepackage{tikz}  
+\usetikzlibrary{patterns}                 
+\usepackage{pgfplots}              
+\usepackage{circuitikz}
+\usepackage{nicefrac}
+\usepackage{bm}
+            
+\usepackage{titlesec}
+\titlespacing*{\section}{0pt}{0pt}{0pt}
+
+\usetikzlibrary{quotes,angles}
+\usetikzlibrary{positioning,intersections}
+\usetikzlibrary{through}
+
+\textwidth=19.0cm \oddsidemargin=-1.3cm
+\textheight=26cm \topmargin=-2.5cm
+
+\newtheorem{task}{Задание}
+\newtheorem*{task*}{Задание}
+
+\theoremstyle{remark}
+
+\newtheorem{remark}{Замечание}
+\newtheorem*{remark*}{Замечание}
+\newtheorem{commentarium}{Комментарий}
+\newtheorem*{commentarium*}{Комментарий}
+
+\usepackage{tikz-cd}
+
+\newenvironment{sysmatrix}[1]
+{
+    \left(\begin{array}{@{}#1@{}}
+}
+{\end{array}\right)}
+\newcommand{\smt}[2]{\begin{sysmatrix}{#1} #2\end{sysmatrix}}
+\newcommand{\eq}[1]{\begin{cases} #1 \end{cases}}
+
+\newcommand{\elon}[3]{%
+  \ensuremath{\text{Э}_1(#1,\; #2,\; #3)}%
+}
+\newcommand{\eltw}[2]{%
+  \ensuremath{\text{Э}_2(#1,\; #2)}%
+}
+\newcommand{\elth}[2]{%
+  \ensuremath{\text{Э}_3(#1,\; #2)}%
+}
+ 
+\newcommand{\eqon}[3]{%
+  \ensuremath{\overset{\text{Э}_1(#1,\; #2,\; #3)}{=}}%
+}
+\newcommand{\eqtw}[2]{%
+  \ensuremath{\overset{\text{Э}_2(#1,\; #2)}{=}}%
+}
+\newcommand{\eqth}[2]{%
+  \ensuremath{\overset{\text{Э}_3(#1,\; #2)}{=}}%
+}
+
+\newcommand{\arron}[3]{%
+  \ensuremath{\xrightarrow{\text{Э}_1(#1,\; #2,\; #3)}}%
+}
+\newcommand{\arrtw}[2]{%
+  \ensuremath{\xrightarrow{\text{Э}_2(#1,\; #2)}}%
+}
+\newcommand{\arrth}[2]{%
+  \ensuremath{\xrightarrow{\text{Э}_3(#1,\; #2)}}%
+}
+
+\makeatletter
+\renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
+  \hskip -\arraycolsep
+  \let\@ifnextchar\new@ifnextchar
+  \array{#1}}
+\makeatother
+
+% tasks here https://www.dropbox.com/s/8yhwwpf3dvft1yd/LA_19-20_Stream2_Test2.pdf?dl=0
+\title{Летний экзамен учебного года 2019/2020\\Вариант \textnumero 1}
+\author{	
+  % ОТКОММЕНТИРУЙ СЕБЯ
+    Алиса Вернигор       \\ \href{https://t.me/allisyonok}{Telegram} \and
+	Сергей Лоптев        \\ \href{https://t.me/beast_sl}{Telegram} \and
+	Оля Козлова        \\ \href{https://t.me/grenlayk}{Telegram}
+}
+
+\date{}
+
+\begin{document}
+	\maketitle
+    % Алиса
+    \section*{Задача \textnumero 1}
+        % текст задачи
+        Найдите базис пересечения двух подпространств $L_1, L_2 \subset \RR^4$,
+        где $L_1$ состоит из всех решений уравнения $2x_1 - x_2 - x_3 + 2x_4 = 0$, 
+        а $L_2$ есть линейная оболочка векторов $(3, 2, 3, -2), (2, 2, 3, 1), 
+        (3, 1, 4, -3)$.
+        \begin{proof}[Решение.] \ 
+            
+
+        \end{proof}
+    % Сережа
+    \section*{Задача \textnumero 2}
+        % текст задачи
+        Найдите невырожденную замену координат (выражение старых координат через 
+        новые), приводящие квадратичную форму $Q(x, y, z) = 16x^2 + 9y^2 + z^4 - 24xy + 8xz$
+        к нормальному виду, и выпишите этот вид.
+        \begin{proof}[Решение.] \ 
+            
+
+        \end{proof}
+
+    % Оля
+    \section*{Задача \textnumero 3}
+        % текст задачи
+        Найдите псевдорешение для следующей системы линейных уравнений: 
+        $\eq{
+            2x_1 - x_2 = 1\\
+            -x_1 + 3x_2 = -2 \\
+            x_1 + x_2 = 1 \\
+            -2x_1 + 3x_2 = 2
+        }$
+        \begin{proof}[Решение.] \ 
+            
+
+        \end{proof}
+    
+    % Алиса
+    \section*{Задача \textnumero 4}
+        % текст задачи
+        Приведите пример двух диагонализуемых линейных операторов $\varphi$ и 
+        $\psi$ в $\RR^2$, для которых оператор $4\varphi + 7\psi$ недиагонализуем.
+        \begin{proof}[Решение.] \ 
+            
+
+        \end{proof}
+    
+    % Сережа
+    \section*{Задача \textnumero 5}
+        % текст задачи
+        Ортогональный линейный оператор $\varphi \colon \RR^3 \to \RR^3$ имеет в стандартном
+        базисе матрицу 
+        $$
+        \begin{pmatrix}
+            \nicefrac23 & -\nicefrac23 & \nicefrac13 \\
+            \nicefrac23 & \nicefrac13 & \nicefrac23 \\
+            \nicefrac13 & \nicefrac23 & -\nicefrac23 \\
+        \end{pmatrix}
+        $$
+        Найдите ортонормированный базис, в котором матрица оператора $\varphi$ имеет 
+        канонический вид и выпишите эту матрицу. Укажите ось и угол поворота, определяемого 
+        оператором $\varphi$.
+        \begin{proof}[Решение.] \ 
+            
+
+        \end{proof}
+
+    % Оля
+    \section*{Задача \textnumero 6}
+        % текст задачи
+        Приведите пример матрицы $A \in \Mat_{2\times 3}(\RR)$ ранга 2, для которой 
+        ближайшей по норме Фробениуса матрицей ранга 1 будет матрица
+        $$
+        \begin{pmatrix}
+            -6 & 3 & 3 \\
+            3 & -1 & -1 \\
+        \end{pmatrix}.
+        $$
+        \begin{proof}[Решение.] \ 
+            
+
+        \end{proof}
+
+    % Оля
+    \section*{Задача \textnumero 7}
+        % текст задачи
+        Найдите все значения параметра $a$, при которых уравнение 
+        $$ 
+        3y^2 + 2z^2 -4axz + 8x - 6y - 9
+        $$
+        определяет эллиптический параболоид в $\RR^3$. Для каждого найденного значения  $a$
+        укажите прямоугольную декартову систему координат в $\RR^3$ (выражение старых координат 
+        через новые), в которой данное уравнение принимает канонический вид. 
+        \begin{proof}[Решение.] \ 
+            
+
+        \end{proof}
+    
+    % Сережа
+    \section*{Задача \textnumero 8}
+        % текст задачи
+        Линейный оператор $\varphi \colon \RR^4 \to \RR^4$ имеет в стандартном базисе матрицу
+        $$
+        \begin{pmatrix}
+            3 & 1 & 0 & -2 \\
+            0 & 1 & 0 & 4 \\
+            6 & 4 & 3 & -5 \\
+            0 & -1 & 0 & 5 \\
+        \end{pmatrix}.
+        $$
+        Найдите базис пространства $\RR^4$, в котором матрица оператора $\varphi$ 
+        имеет жорданову форму и укажите эту жорданову форму.
+        \begin{proof}[Решение.] \ 
+            
+
+        \end{proof}
+      
+\end{document}
