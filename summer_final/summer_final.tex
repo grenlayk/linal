@@ -213,7 +213,7 @@
             $
 
         \end{proof}
-    % Сережа
+    % Оля
     \section*{Задача \textnumero 2}
         % текст задачи
         Найдите невырожденную замену координат (выражение старых координат через 
@@ -345,7 +345,7 @@
 
         \end{proof}
 
-    % Оля
+    % Серёжа
     \section*{Задача \textnumero 3}
         % текст задачи
         Найдите псевдорешение для следующей системы линейных уравнений: 
@@ -356,21 +356,157 @@
             -2x_1 + 3x_2 = 2
         }$
         \begin{proof}[Решение.] \ 
-            
+        Систему из условия можно переписать как $Ax = b$, где:
+        \begin{align*}
+          A = \begin{pmatrix}
+            2 & -1 \\
+            -1 & 3 \\
+            1 & 1 \\
+            -2 & 3 
+          \end{pmatrix}, \quad\quad 
+          b = \begin{pmatrix}
+            1 \\
+            -2 \\
+            1 \\
+            2
+          \end{pmatrix}
+        \end{align*}
+        Помним, что такая система может быть решена по формуле Атата:
+        \begin{align*}
+          x &= (A^TA)^{-1}A^Tb.
+        \end{align*}
+        Причём, в силу линейной независимости столбцов $A$, формула является корректной.
 
+        Посчитаем по частям.
+        \begin{align*}
+          A^TA = \begin{pmatrix}
+            2 & -1 & 1 & -2 \\
+            -1 & 3 & 1 & 3
+          \end{pmatrix} \cdot \begin{pmatrix}
+            2 & -1 \\
+            -1 & 3 \\
+            1 & 1 \\
+            -2 & 3
+          \end{pmatrix} = \begin{pmatrix}
+            10 & -10 \\
+            -10 & 20
+          \end{pmatrix}.
+        \end{align*}
+        Ищем обратную матрицу через формулу с алгебраическими дополнениями (обратите внимание, что матрица после $\frac{1}{\det A}$~--- это \textbf{транспонированная} матрица алгебраических дополнений):
+        \begin{align*}
+          (A^TA)^{-1} = 
+          \frac{1}{\det A} \begin{pmatrix}
+            A_{11} & A_{21} \\
+            A_{12} & A_{22}  
+          \end{pmatrix} = 
+          \frac{1}{100} \begin{pmatrix}
+            20 & 10 \\
+            10 & 10
+          \end{pmatrix}.
+        \end{align*}
+        Теперь $A^T b$:
+        \begin{align*}
+          A^T b = \begin{pmatrix}
+            2 & -1 & 1 & -2 \\
+            -1 & 3 & 1 & 3
+          \end{pmatrix} \cdot \begin{pmatrix}
+            1 \\
+            -2 \\
+            1 \\
+            2
+          \end{pmatrix} =
+          \begin{pmatrix}
+            1 \\
+            0
+          \end{pmatrix}
+        \end{align*}
+        Завершим решение:
+        \begin{align*}
+          \hat{x} = (A^TA)^{-1}A^Tb = 
+          \frac{1}{100} \begin{pmatrix}
+            20 & 10 \\
+            10 & 10
+          \end{pmatrix} \cdot \begin{pmatrix}
+            1 \\
+            0
+          \end{pmatrix} = 
+          \frac{\bm{1}}{\bm{10}}\begin{pmatrix}
+            \bm{2} \\
+            \bm{1}
+          \end{pmatrix}
+        \end{align*}
         \end{proof}
     
-    % Алиса
+    % Серёжа
     \section*{Задача \textnumero 4}
         % текст задачи
         Приведите пример двух диагонализуемых линейных операторов $\varphi$ и 
         $\psi$ в $\RR^2$, для которых оператор $4\varphi + 7\psi$ недиагонализуем.
         \begin{proof}[Решение.] \ 
-            
+        Ну, тут есть два подхода. Рассмотрим оба.
+        \begin{enumerate}[label=\arabic*)]
+          \item Мы работаем в $\RR^2$. Чего мы хотим от недиагонализуемого оператора? Чтобы его характеристический многочлен (а он будет второй степени) не раскладывался на линейные множители. Например, подойдёт хар.многочлен $t^2 + c$, где $c > 0$. Таким образом, хотим получить следующую матрицу оператора $4 \varphi + 7 \psi$: 
+          \begin{equation*}
+            A(4\varphi + 7\psi, e) = \begin{pmatrix}
+              0 & c \\
+              -c & 0
+            \end{pmatrix},
+          \end{equation*}
+          где $c \neq 0$.
+          Раз наш оператор равен $4 \varphi + 7 \psi$, логично будет взять следующие матрицы операторов $\varphi$ и $\psi$:
+          \begin{align*}
+            A(\varphi, e) = \begin{pmatrix}
+              7 & 1 \\
+              -1 & -7
+            \end{pmatrix}, \quad\quad A(\psi, e) = \begin{pmatrix}
+              -4 & 1 \\
+              -1 & 4
+            \end{pmatrix}.
+          \end{align*}
+          Тогда матрица оператора $4\varphi + 7\psi$ будет иметь нужный нам вид, где $c = 11$.
+          Проверим диагонализуемость операторов $\varphi$ и $\psi$. Найдём их хармногочлены:
+          \begin{align*}
+            &\begin{aligned}
+              \chi_\varphi(t) = (7 - t)(-7 - t) + 1 = (t - 7)(t + 7) + 1 = t^2 - 49 + 1 = t^2 - 48.
+            \end{aligned} \\
+            &\begin{aligned}
+              \chi_\psi(t) = (-4 - t)(4 - t) + 1 = (t - 4)(t + 4) + 1 = t^2 - 16 + 1 = t^2 - 15. 
+            \end{aligned}
+          \end{align*}
+          Очевидно, оба хармногочлена раскладываются на линейные множители, причём алгебраическая кратность корней будет равна единице. Это значит, что линейные операторы $\varphi$ и $\psi$, заданные таким образом, диагонализуемы.
+          \item Воспользуемся вот каким фактом. Матрица вида $\begin{pmatrix}
+            a & b \\
+            0 & c
+          \end{pmatrix}$ диагонализуема либо когда $b = 0$ (в этом случае матрица изначально диагональна), либо когда $a \neq c$ (тогда у хармногочлена два разных корня). Иначе (то есть, если $a = c$ и $b \neq 0$, тогда у хармногочлена будет один корень, это собственное значение с алгебраической кратностью 2, но геометрической кратностью 1) оператор недиагонализуем. Это значит, что матрицу оператора $\varphi$ мы можем взять вида $\begin{pmatrix}
+            a & 0 \\
+            0 & a
+          \end{pmatrix}$, где $a \neq 0$, а матрицу оператора $\psi$~-- вида $\begin{pmatrix}
+            d & b \\
+            0 & c
+          \end{pmatrix}$, где $b \neq 0$ и $d \neq c$.
+          Например, возьмём 
+          \begin{align*}
+            A(\varphi, e) = \begin{pmatrix}
+              7 & 0 \\
+              0 & 0
+            \end{pmatrix}, \quad\quad A(\psi, e) = \begin{pmatrix}
+              0 & 2 \\
+              0 & 4
+            \end{pmatrix}.
+          \end{align*}
+          Тогда:
+          \begin{equation*}
+            A(4\varphi + 7\psi, e) = \begin{pmatrix}
+              28 & 14 \\
+              0 & 28
+            \end{pmatrix}
+          \end{equation*}
+          и $4\varphi + 7\psi$~--- недиагонализуемый оператор.
+        \end{enumerate}
 
         \end{proof}
     
-    % Сережа
+    % Оля
     \section*{Задача \textnumero 5}
         % текст задачи
         Ортогональный линейный оператор $\varphi \colon \RR^3 \to \RR^3$ имеет в стандартном
@@ -526,7 +662,7 @@
 
         \end{proof}
 
-    % Оля
+    % Серёжа
     \section*{Задача \textnumero 6}
         % текст задачи
         Приведите пример матрицы $A \in \Mat_{2\times 3}(\RR)$ ранга 2, для которой 
@@ -534,15 +670,259 @@
         $$
         \begin{pmatrix}
             -6 & 3 & 3 \\
-            3 & -1 & -1 \\
+            2 & -1 & -1 \\
         \end{pmatrix}.
         $$
         \begin{proof}[Решение.] \ 
-            
-
+          Для начала найдём полное SVD матрицы по стандартному \href{https://docviewer.yandex.ru/view/1203695933/?*=4ryhHsfuMOpXKV9Y7YnIVhDS7hd7InVybCI6InlhLWRpc2stcHVibGljOi8vVUo4QnpCMHExNnpuNlljdUJYRTViUFRmcFVUTm5QeitYYnhiWCtteWoxU0tjVzhlcUdaMG9MMXk2QXFEVWRZR3EvSjZicG1SeU9Kb25UM1ZvWG5EYWc9PTovU2VtaW5hcjMxX3NlbWluYXIucGRmIiwidGl0bGUiOiJTZW1pbmFyMzFfc2VtaW5hci5wZGYiLCJub2lmcmFtZSI6ZmFsc2UsInVpZCI6IjEyMDM2OTU5MzMiLCJ0cyI6MTYyNDI3NTI2NDM1MywieXUiOiIyNzM0OTIzMDkxNTkzMDEzMDIzIn0%3D}{алгоритму}. 
+          \begin{enumerate}
+            \item Составим матрицу $S = AA^T \in \Mat_2(\RR)$:
+            \begin{equation}
+              S = AA^T = 
+              \begin{pmatrix}
+                -6 & 3 & 3 \\
+                2 & -1 & -1 \\
+              \end{pmatrix} \cdot \begin{pmatrix}
+                -6 & 2 \\
+                3 & -1 \\
+                3 & -1
+              \end{pmatrix} =
+              \begin{pmatrix}
+                54 & -18 \\
+                -18 & 6
+              \end{pmatrix}.
+            \end{equation}
+            Тогда $S = U \Sigma \Sigma^T U^T$.
+            \item Найдём собственное разложение для матрицы $S:$ $S = CDC^T$. Для этого найдём корни хармногочлена:
+            \begin{align*}
+              \chi_S = (54 - t)(6 - t) - 18^2 = (t - 54)(t - 6) - 324 = t^2 - 60t + 324 - 324 = t^2 - 60t = t(t - 60) 
+            \end{align*}
+            Хармногочлен разложился на неприводимые множители; его корни, они же собственные значения матрицы~--- $\lambda_1 = 60$ и $\lambda_2 = 0$ (обязательно пронумеровать по убыванию). Тогда
+            \begin{equation*}
+              D = \begin{pmatrix}
+                60 & 0 \\
+                0 & 0
+              \end{pmatrix}.
+            \end{equation*}
+            Теперь найдём собственные векторы:
+            \begin{itemize}
+              \item для $\lambda_1 = 60$, найдём ФСР для матрицы $S - \lambda_1 E$:
+              \begin{align*}
+                \begin{pmatrix}
+                  -6 & -18 \\
+                  -18 & -54
+                \end{pmatrix} \arron{2}{1}{-3} \begin{pmatrix}
+                  -6 & -18 \\
+                  0 & 0
+                \end{pmatrix} \arrth{1}{-6} \begin{pmatrix}
+                  1 & 3 \\
+                  0 & 0
+                \end{pmatrix}
+              \end{align*}
+              Тогда ФСР~--- один вектор $\begin{pmatrix}
+                -3 & 1
+              \end{pmatrix}$. Нормируем и получим вектор $\frac{1}{\sqrt{10}}\begin{pmatrix}
+                -3 & 1
+              \end{pmatrix}$.
+              \item для $\lambda_2 = 60$, найдём ФСР для матрицы $S - \lambda_2 E$:
+              \begin{align*}
+                \begin{pmatrix}
+                  54 & -18 \\
+                  -18 & 6
+                \end{pmatrix} \arron{1}{2}{3} \begin{pmatrix}
+                  0 & 0 \\
+                  -18 & 6
+                \end{pmatrix} \arrtw{1}{2} \begin{pmatrix}
+                  -18 & 6 \\
+                  0 & 0
+                \end{pmatrix} \arrth{1}{-\nicefrac{1}{3}} \begin{pmatrix}
+                  3 & -1 \\
+                  0 & 0
+                \end{pmatrix}
+              \end{align*}
+              Тогда ФСР~--- один вектор $\begin{pmatrix}
+                1 & 3
+              \end{pmatrix}$. Нормируем и получим вектор $\frac{1}{\sqrt{10}}\begin{pmatrix}
+                1 & 3
+              \end{pmatrix}$.
+            \end{itemize}
+            Тогда матрица $C$ выглядит так:
+            \begin{equation*}
+              C = \frac{1}{\sqrt{10}} \begin{pmatrix}
+                -3 & 1 \\
+                1 & 3
+              \end{pmatrix}.
+            \end{equation*}
+            \item Тогда $U = C$, а $\Sigma\Sigma^{-1} = D$. Значит, $\sigma_1 = \sqrt{\lambda_1} = \sqrt{60}$ и $\sigma_2 = \sqrt{\lambda_2} = 0$.
+            \item Знаем из алгоритма, что $v_i = \frac{1}{\sigma_i}A^t u_i$, где $0 \leq i \leq s,\ s: \sigma_s > 0 \wedge \sigma_{s+1} = 0$. У нас $s = 1$, тогда посчитаем $v_1$:
+            \begin{align*}
+              v_1 = \frac{1}{\sigma_1} A^t u_1 = \frac{1}{\sqrt{60}} \begin{pmatrix}
+                -6 & 2 \\
+                3 & -1 \\
+                3 & -1      
+              \end{pmatrix} \cdot \frac{1}{\sqrt{10}} \begin{pmatrix}
+                -3 \\
+                1
+              \end{pmatrix} = \frac{1}{10\sqrt{6}} \begin{pmatrix}
+                20 \\
+                -10 \\
+                -10
+              \end{pmatrix} = \frac{1}{\sqrt{6}} \begin{pmatrix}
+                2 \\
+                -1 \\
+                -1
+              \end{pmatrix}
+            \end{align*}
+            \item Осталось найти $v_2$ и $v_3$. Для этого найдём ФСР системы $Ax = 0$ и ортогонализуем его Грамом-Шмидтом:
+            \begin{align*}
+              \begin{pmatrix}
+                -6 & 3 & 3 \\
+                2 & -1 & -1
+              \end{pmatrix} \arron{1}{2}{3}
+              \begin{pmatrix}
+                0 & 0 & 0 \\
+                2 & -1 & -1
+              \end{pmatrix} \arrtw{1}{2} 
+              \begin{pmatrix}
+                2 & -1 & -1 \\
+                0 & 0 & 0 
+              \end{pmatrix}
+            \end{align*}
+            Тогда ФСР~--- векторы $f_1 = \begin{pmatrix}
+              1 & 2 & 0
+            \end{pmatrix}$, $f_2 = \begin{pmatrix}
+              1 & 0 & 2
+            \end{pmatrix}$. Заметим, что эти векторы ортогональны изначальному $v_1$. Теперь ортогонализуем:
+            \begin{align*}
+              f'_1 &= f_1 = \begin{pmatrix}
+                1 & 2 & 0
+              \end{pmatrix} \\
+              f'_2 &= f_2 - \frac{(f_2, f'_1)}{(f'_1, f'_1)}f'_1 = \begin{pmatrix}
+                1 & 0 & 2
+              \end{pmatrix} - \frac{1}{5}\begin{pmatrix}
+                1 & 2 & 0
+              \end{pmatrix} = \begin{pmatrix}
+                \nicefrac{4}{5} & -\nicefrac{2}{5} & 2 
+              \end{pmatrix} \to \begin{pmatrix}
+                2 & -1 & 5
+              \end{pmatrix}
+            \end{align*}
+            Нормируем:
+            \begin{align*}
+              v_2 &= \frac{f'_1}{|| f'_1 ||} = \frac{1}{\sqrt{5}}\begin{pmatrix}
+                1 & 2 & 0
+              \end{pmatrix} \\
+              v_3 &= \frac{f'_2}{||f'_2||} = \frac{1}{\sqrt{30}}\begin{pmatrix}
+                2 & -1 & 5
+              \end{pmatrix}
+            \end{align*}
+          \end{enumerate}
+          Ура, SVD найдено! На всякий случай запишем, что получилось:
+          \begin{equation*}
+            A = \frac{1}{\sqrt{10}} \begin{pmatrix}
+              -3 & 1 \\
+              1 & 3
+            \end{pmatrix} \begin{pmatrix}
+              \sqrt{60} & 0 & 0\\
+              0 & 0 & 0
+            \end{pmatrix} \begin{pmatrix}
+              2/\sqrt{6} & 1/\sqrt{5} & 2/\sqrt{30} \\
+              -1/\sqrt{6} & 2/\sqrt{5} &-1/\sqrt{30} \\
+              -1/\sqrt{6} & 0 & 5/\sqrt{30}
+            \end{pmatrix}
+          \end{equation*}
+          Теперь, чтобы получить какую-то матрицу, к которой $A$~--- ближайшая по норме Фробениуса ранга 1, надо поправить $\Sigma$, чтобы $0 < \sigma_2 < \sigma_1$. Например, подойдёт число $\sqrt{50}$. Замечательное число. Давайте тогда посчитаем  $A' = \sigma_1u_1^Tv_1 + \sigma_2 u_2^T v_2$:
+          \begin{align*}
+            \bm{A'} &\bm{=} \sqrt{60} \frac{1}{\sqrt{10}} \frac{1}{\sqrt{6}} \begin{pmatrix}
+              -3 \\ 1
+            \end{pmatrix} \begin{pmatrix}
+              2 &
+              -1 &
+              -1
+            \end{pmatrix} + \sqrt{50} \frac{1}{\sqrt{10}} \frac{1}{\sqrt{5}} \begin{pmatrix}
+              1 \\
+              3
+            \end{pmatrix} \begin{pmatrix}
+              1 & 2 & 0
+            \end{pmatrix} = \begin{pmatrix}
+              -6 & 3 & 3 \\
+              2 & -1 & -1
+            \end{pmatrix} + \begin{pmatrix}
+              1 & 2 & 0 \\
+              3 & 6 & 0
+            \end{pmatrix} = \\ &= \begin{pmatrix}
+              \bm{-5} & \bm{5} & \bm{3} \\
+              \bm{5} & \bm{-5} & \bm{-1}
+            \end{pmatrix}
+          \end{align*} 
+          Если что, таким способом на КР задачу решать не надо. Давайте оптимизируем. Во-первых, зачем нам считать полное SVD? Мы совсем нигде не воспользовались вектором $v_3$. Давайте лучше найдём компактное SVD, после чего дополним $u_1$ до ортонормированного базиса $\RR^2$, а для $v_1$ достаточно просто найти какой-то ортогональный вектор единичной длины из $\RR^3$, затем изменим $\sigma_2$ и тоже получим верный ответ.
+          
+          Алгоритм (из той же ссылки) очень похож, но во втором пункте мы забиваем на собственное значение $0$ и на собственный вектор, который ему отвечает. Получаем, что:
+          \begin{align*}
+            U = \frac{1}{\sqrt{10}}\begin{pmatrix}
+              -3 \\
+              1 
+            \end{pmatrix}, \quad\quad 
+            \Sigma = \begin{pmatrix}
+              \sqrt{60}
+            \end{pmatrix}.
+          \end{align*}
+          После этого мы по алгоритму получаем, что $v_1 = \frac{1}{\sigma_1} A^T u_1$, или (считали выше):
+          \begin{align*}
+            v_1 = \frac{1}{\sqrt{6}} \begin{pmatrix}
+              2 \\
+              -1 \\
+              -1
+            \end{pmatrix} = V.
+          \end{align*}
+          Осталось только дополнить векторы. Например, вектор $u_1$ дополняется вектором $u_2 = \frac{1}{\sqrt{10}} \begin{pmatrix}
+            1 & 3
+          \end{pmatrix}$, а вектор $v_1$~--- вектором $\frac{1}{\sqrt{3}} \begin{pmatrix}
+            1 & 1 & 1
+          \end{pmatrix}$. Тогда выберем $\sigma_2 = \sqrt{30}$ и получим:
+          \begin{align*}
+            \bm{A'} &\bm{=} \sigma_1u_1^Tv_1 + \sigma_2 u_2^T v_2 = \sqrt{60} \frac{1}{\sqrt{10}} \frac{1}{\sqrt{6}} \begin{pmatrix}
+              -3 \\
+              1
+            \end{pmatrix} \begin{pmatrix}
+              2 & -1 & -1
+            \end{pmatrix} + \sqrt{30} \frac{1}{\sqrt{10}} \frac{1}{\sqrt{3}} \begin{pmatrix}
+              1 \\
+              3
+            \end{pmatrix} \begin{pmatrix}
+              1 & 1 & 1
+            \end{pmatrix} = \\
+            &= \begin{pmatrix}
+              -6 & 3 & 3 \\
+              2 & -1 & -1
+            \end{pmatrix} + \begin{pmatrix}
+              1 & 1 & 1 \\
+              3 & 3  & 3
+            \end{pmatrix} = \begin{pmatrix}
+              \bm{-5} & \bm{4} & \bm{4} \\
+              \bm{5} & \bm{2} & \bm{2}
+            \end{pmatrix}
+          \end{align*}
+          Уже лучше. Но можно ещё лучше. Крутость нашей ситуации в том, что так как матрица одноранговая, найти векторы $u_1$ и $v_1$ для неё ищутся очень тривиально. Посмотрим на матрицу $A$:
+          \begin{equation*}
+            A = \begin{pmatrix}
+              -6 & 3 & 3 \\
+              2 & -1 & -1
+            \end{pmatrix}
+          \end{equation*}
+          Очевидно, что первая строка~--- это вторая, умноженная на $-3$. Тогда ясно, что 
+          \begin{equation*}
+            A = \begin{pmatrix}
+              -3 \\
+              1
+            \end{pmatrix} \begin{pmatrix}
+              2 & -1 & -1
+            \end{pmatrix}.
+          \end{equation*}
+          Тогда мы можем просто нормировать первый множитель и сказать, что это $u_1$, затем нормировать второй множитель и сказать, что это $v_1$, а затем взять произведение длин множителей и сказать что это $\sigma_1$. После этого алгоритм такой же, как в предыдущем пункте (про компактное SVD). Решили задачу, по пути разобрали два алгоритма и соптимизировали их. Отлично!
         \end{proof}
 
-    % Оля
+    % Серёжа
     \section*{Задача \textnumero 7}
         % текст задачи
         Найдите все значения параметра $a$, при которых уравнение 
@@ -553,11 +933,137 @@
         укажите прямоугольную декартову систему координат в $\RR^3$ (выражение старых координат 
         через новые), в которой данное уравнение принимает канонический вид. 
         \begin{proof}[Решение.] \ 
-            
-
+          Мы знаем, что уравнение эллиптического параболоида выглядит как:
+          \begin{equation*}
+            \frac{x^2}{a^2} + \frac{y^2}{b^2} = 2z.
+          \end{equation*}
+          Сначала разберёмся со слагаемыми второго порядка. Приведём часть $3y^2 + 2z^2 - 4axz$ к главным осям.
+          Рассмотрим матрицу квадратичной формы:
+        \begin{align*}
+          A = \begin{pmatrix}
+            0 & 0 & -2a \\
+            0 & 3 & 0 \\
+            -2a & 0 & 2
+          \end{pmatrix}
+        \end{align*}
+        Она симметрична, следовательно, диагонализуема. Диагонализуем. Найдём характеристический многочлен:
+        \begin{align*}
+          \chi_A(t) = -\begin{vmatrix}
+            -t & 0 & -2a \\
+            0 & 3 - t & 0 \\
+            -2a & 0 & 2 - t
+          \end{vmatrix} = -(t - 3) \begin{vmatrix}
+            -t & -2a \\
+            -2a & 2 - t
+          \end{vmatrix} = -(t - 3)((-t)(2 - t) - 4a^2) = - (t - 3)(t^2 - 2t - 4a^2).
+        \end{align*}
+        Найдём дискриминант правого множителя:
+        \begin{equation*}
+          D = 4 + 16a^2 = \left( 2\sqrt{1 + 4a^2} \right)^2.
+        \end{equation*}
+        Тогда корни правого множителя:
+        \begin{equation*}
+          t_{2,3} = \frac{2 \pm 2\sqrt{1 + 4a^2}}{2} = 1 \pm \sqrt{1 + 4a^2},\text{ или }t_2 = 1 + \sqrt{1 + 4a^2},\ t_3 = 1 - \sqrt{1 + 4a^2}.
+        \end{equation*}
+        То есть, нашли вид нашей квадратичной формы, уже приведённой к главным осям. Он такой:
+        \begin{equation*}
+          3x^2 + \left(1 + \sqrt{1 + 4a^2} \right)y^2 + \left(1 - \sqrt{1 + 4a^2} \right)z^2.
+        \end{equation*}
+        Вспомним канонический вид эллиптического параболоида (в начале решения). Тогда мы хотим, чтобы два слагаемых при квадратах были положительны, а третье равнялось нулю. Занулить мы можем только третье слагаемое, взяв $\bm{a = 0}$. Так и сделаем. Тогда получим такой итоговый вид квадратичной формы:
+        \begin{equation*}
+          3x^2 + 2y^2
+        \end{equation*}
+        Теперь найдём замену, которая приводит квадратичную форму в такой вид. Переберём собственные значения и найдём собственные векторы:
+        \begin{itemize}
+          \item $t = 3$. Ищем ФСР $A - 3E = 
+          \begin{pmatrix}
+              -3 & 0 & 0 \\
+              0 & 0 & 0 \\
+              0 & 0 & -1
+          \end{pmatrix}$. ФСР: $v_1 = \begin{pmatrix}
+            0 \\
+            1 \\
+            0
+          \end{pmatrix}$.
+          \item $t = 2$. Ищем ФСР $A - 2E = 
+          \begin{pmatrix}
+              -2 & 0 & 0 \\
+              0 & 1 & 0 \\
+              0 & 0 & 0
+          \end{pmatrix}$. ФСР: $v_2 = \begin{pmatrix}
+            0 \\
+            0 \\
+            1
+          \end{pmatrix}$.
+          \item $t = 0$. Ищем ФСР $A - 0E = 
+          \begin{pmatrix}
+              0 & 0 & 0 \\
+              0 & 3 & 0 \\
+              0 & 0 & 2
+          \end{pmatrix}$. ФСР: $v_3 = \begin{pmatrix}
+            1 \\
+            0 \\
+            0
+          \end{pmatrix}$.
+        \end{itemize}
+        То есть, матрица перехода от старого базиса к новому:
+        \begin{equation*}
+          C = \begin{pmatrix}
+            0 & 0 & 1 \\
+            1 & 0 & 0 \\
+            0 & 1 & 0
+          \end{pmatrix},
+        \end{equation*}
+        и $x = Cx'$~--- выражение старых координат через промежуточные.
+        Теперь мы знаем первоначальную замену и чему равно $a$. Применим их к исходному многочлену, получим:
+        \begin{equation*}
+          3x'^2 + 2y'^2 + 8z' - 6x' - 9 = 0
+        \end{equation*}
+        Такую штуку уже можно привести к эллиптическому параболоиду чем-то похожим на метод Лагранжа:
+        \begin{align*}
+          3x'^2 + 2y'^2 + 8z' - 6x' - 9 &= (3x'^2 - 6x' + 3) + 2y'^2 + 8z' - 12 = 3(x' - 1)^2 + 2y'^2 + 8z' - 12
+        \end{align*}
+        Но мы-то хотим к нулю приравнять:
+        \begin{align*}
+          3(x' - 1)^2 + 2y'^2 + 8z' - 12 &= 0 \\
+          3(x' - 1)^2 + 2y'^2 &= 12 - 8z' \\
+          3(x' - 1)^2 + 2y'^2 &= 2(6 - 4z')
+        \end{align*}
+        Тогда выражение итоговых координат через промежуточные:
+        \begin{align*}
+          \begin{cases}
+            x'' = x' - 1 \\
+            y'' = y' \\
+            z'' = 6 - 4z'
+          \end{cases}
+        \end{align*}
+        Выразим в обратную сторону:
+        \begin{align*}
+          \begin{cases}
+            x' = x'' + 1 \\
+            y' = y'' \\
+            z' = 3/2 - (1/4)z''
+          \end{cases}
+        \end{align*}
+        Но ещё мы помним выражение старых через промежуточные:
+        \begin{align*}
+          \begin{cases}
+            z = y' \\
+            y = x' \\
+            x = z'
+          \end{cases}
+        \end{align*}
+        Тогда выражение исходных через итоговые:
+        \begin{align*}
+          \begin{cases}
+            \bm{x = 3/2 - (1/4)z''} \\
+            \bm{y = x'' + 1} \\
+            \bm{z = y''}
+          \end{cases}
+        \end{align*}        
         \end{proof}
-    
-    % Сережа
+
+    % Оля
     \section*{Задача \textnumero 8}
         % текст задачи
         Линейный оператор $\varphi \colon \RR^4 \to \RR^4$ имеет в стандартном базисе матрицу
