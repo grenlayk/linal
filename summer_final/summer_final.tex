@@ -96,13 +96,121 @@
 	\maketitle
     % Оля
     \section*{Задача \textnumero 1}
-        % текст задачи
+        % текст задачи 
         Найдите базис пересечения двух подпространств $L_1, L_2 \subset \RR^4$,
         где $L_1$ состоит из всех решений уравнения $2x_1 - x_2 - x_3 + 2x_4 = 0$, 
         а $L_2$ есть линейная оболочка векторов $(3, 2, 3, -2), (2, 2, 3, 1), 
         (3, 1, 4, -3)$.
         \begin{proof}[Решение.] \ 
-            
+            Будем действовать по стандартному алгоритму.
+            \begin{enumerate}
+                \item Представим $L_2$ в виде ОСЛУ: 
+                \begin{multline*}
+                    \begin{pmatrix}
+                        3 & 2 & 3 & -2 \\
+                        2 & 2 & 3 & 1 \\
+                        3 & 1 & 4 & -3
+                    \end{pmatrix} 
+                    \overset{\elon{2}{3}{-1}}{\arron{2}{1}{-1}}
+                    \begin{pmatrix}
+                        1 & 0 & 0 & -3 \\
+                        2 & 2 & 3 & 1 \\
+                        1 & -1 & 1 & -4
+                    \end{pmatrix} \overset{\elon{1}{3}{-1}}{\arron{1}{2}{-2}}
+                    \begin{pmatrix}
+                        1 & 0 & 0 & -3 \\
+                        0 & 2 & 3 & 7 \\
+                        0 & -1 & 1 & -1
+                    \end{pmatrix}
+                    \overset{\eltw{2}{3}}{\arrth{3}{-1}}
+                    \begin{pmatrix}
+                        1 & 0 & 0 & -3 \\
+                        0 & 1 & -1 & 1 \\
+                        0 & 2 & 3 & 7 \\
+                    \end{pmatrix} \\
+                    \arron{2}{3}{-2}
+                    \begin{pmatrix}
+                        1 & 0 & 0 & -3 \\
+                        0 & 1 & -1 & 1 \\
+                        0 & 0 & 5 & 5 \\
+                    \end{pmatrix}
+                    \arrth{3}{\nicefrac15}
+                    \begin{pmatrix}
+                        1 & 0 & 0 & -3 \\
+                        0 & 1 & -1 & 1 \\
+                        0 & 0 & 1 & 1 \\
+                    \end{pmatrix}
+                    \arron{3}{2}{1}
+                    \begin{pmatrix}
+                        1 & 0 & 0 & -3 \\
+                        0 & 1 & 0 & 2 \\
+                        0 & 0 & 1 & 1 \\
+                    \end{pmatrix}
+                \end{multline*}
+                Получаем ФСР: $
+                \begin{pmatrix}
+                    3\\
+                    -2\\
+                    -1\\
+                    1
+                \end{pmatrix}
+                \Rightarrow L_2 \colon \eq{3x_1 - 2x_2 - x_3 + x_4 = 0}$
+                \item Тогда базис $L_1 \cap L_2$ это ФСР 
+                $\eq{
+                    3x_1 - 2x_2 - x_3 + x_4 = 0 \\
+                    2x_1 - x_2 - x_3 + 2x_4 = 0
+                }$
+                Построим ее. 
+                \begin{multline*}
+                    \begin{pmatrix}
+                        3 & -2 & -1 & 1 \\
+                        2 & -1 & -1 & 2 \\
+                    \end{pmatrix} 
+                    \arron{2}{1}{-1}
+                    \begin{pmatrix}
+                        1 & -1 & 0 & -1 \\
+                        2 & -1 & -1 & 2 \\
+                    \end{pmatrix} 
+                    \arron{1}{2}{-2}
+                    \begin{pmatrix}
+                        1 & -1 & 0 & -1 \\
+                        0 & 1 & -1 & 4 \\
+                    \end{pmatrix} 
+                    \arron{2}{1}{1}
+                    \begin{pmatrix}
+                        1 & 0 & -1 & 3 \\
+                        0 & 1 & -1 & 4 \\
+                    \end{pmatrix} 
+                \end{multline*}
+                ФСР: $
+                \begin{pmatrix}
+                    1\\
+                    1\\
+                    1\\
+                    0
+                \end{pmatrix}, 
+                \begin{pmatrix}
+                    -3\\
+                    -4\\
+                    0\\
+                    1
+                \end{pmatrix}
+                $
+            \end{enumerate}
+            \textbf{Ответ:} базис $L_1 \cap L_2$: $
+            \begin{pmatrix}
+                1\\
+                1\\
+                1\\
+                0
+            \end{pmatrix}, 
+            \begin{pmatrix}
+                -3\\
+                -4\\
+                0\\
+                1
+            \end{pmatrix}
+            $
 
         \end{proof}
     % Оля
@@ -112,7 +220,128 @@
         новые), приводящие квадратичную форму $Q(x, y, z) = 16x^2 + 9y^2 + z^4 - 24xy + 8xz$
         к нормальному виду, и выпишите этот вид.
         \begin{proof}[Решение.] \ 
-            
+            Тут подойдет Лагранж или Симметричный Гаусс --- пользуйтесь 
+            тем, что лучше знаете. Однако Гауссом будет немного быстрее, на мой взгляд.
+            \begin{enumerate}
+                \item Для начала выпишем матрицу билинейной формы: $B(Q, e) = 
+                \begin{pmatrix}
+                    16 & -12 & 4 \\
+                    -12 & 9 & 0 \\
+                    4 & 0 & 1 
+                \end{pmatrix}
+                $. 
+
+                \item А дальше я буду применять Симметричного Гаусса. Помним, что матрица справа 
+                от черты ``накапливает'' в себе элементарные преобразования строк 
+                и что все преобразования к матрице билинейно формы должны быть симметричными.
+                \begin{multline*}
+                    \smt{rrr|rrr} {
+                        16 & -12 & 4 & 1 & 0  & 0\\
+                        -12 & 9 & 0 & 0 & 1  & 0\\
+                        4 & 0 & 1 & 0 & 0 & 1
+                    } \arron{3}{1}{-4} \\
+                    \xrightarrow{\text{строки}} 
+                    \smt{rrr|rrr} {
+                        0 & -12 & 0 & 1 & 0  & -4\\
+                        -12 & 9 & 0 & 0 & 1  & 0\\
+                        4 & 0 & 1 & 0 & 0 & 1
+                    } \xrightarrow{\text{столбцы}} 
+                    \smt{rrr|rrr} {
+                        0 & -12 & 0 & 1 & 0  & -4\\
+                        -12 & 9 & 0 & 0 & 1  & 0\\
+                        0 & 0 & 1 & 0 & 0 & 1
+                    } 
+                    \arrtw{2}{\nicefrac13}  \\
+                    \xrightarrow{\text{строки}} 
+                    \smt{rrr|rrr} {
+                        0 & -12 & 0 & 1 & 0  & -4\\
+                        -4 & 3 & 0 & 0 & \nicefrac13  & 0\\
+                        0 & 0 & 1 & 0 & 0 & 1
+                    } \xrightarrow{\text{столбцы}} 
+                    \smt{rrr|rrr} {
+                        0 & -4 & 0 & 1 & 0  & -4\\
+                        -4 & 1 & 0 & 0 & \nicefrac13  & 0\\
+                        0 & 0 & 1 & 0 & 0 & 1
+                    } \arron{2}{1}{4} \\
+                    \xrightarrow{\text{строки}} 
+                    \smt{rrr|rrr} {
+                        -16 & 0 & 0 & 1 & \nicefrac43  & -4\\
+                        -4 & 1 & 0 & 0 & \nicefrac13  & 0\\
+                        0 & 0 & 1 & 0 & 0 & 1
+                    } \xrightarrow{\text{столбцы}} 
+                    \smt{rrr|rrr} {
+                        -16 & 0 & 0 & 1 & \nicefrac43  & -4\\
+                        0 & 1 & 0 & 0 & \nicefrac13  & 0\\
+                        0 & 0 & 1 & 0 & 0 & 1
+                    } \arrtw{1}{\nicefrac14}  \\
+                    \xrightarrow{\text{строки}} 
+                    \smt{rrr|rrr} {
+                        -4 & 0 & 0 & \nicefrac14 & \nicefrac13  & -1\\
+                        0 & 1 & 0 & 0 & \nicefrac13  & 0\\
+                        0 & 0 & 1 & 0 & 0 & 1
+                    } \xrightarrow{\text{столбцы}} 
+                    \smt{rrr|rrr} {
+                        -1 & 0 & 0 & \nicefrac14 & \nicefrac13  & -1\\
+                        0 & 1 & 0 & 0 & \nicefrac13  & 0\\
+                        0 & 0 & 1 & 0 & 0 & 1
+                    }
+                \end{multline*}
+                \item Получили, что $Q(e^\prime) = -{x^\prime}^2 + {y^\prime}^2 + {z^\prime}^2$. 
+                Для матрицы перехода C верно равенство: 
+                $C^T = \begin{pmatrix}
+                    \nicefrac14 & \nicefrac13  & -1\\
+                    0 & \nicefrac13  & 0\\
+                    0 & 0 & 1
+                \end{pmatrix}    
+                $
+
+                Отсюда $C = \begin{pmatrix}
+                    \nicefrac14 & 0  & 0\\
+                    \nicefrac13 & \nicefrac13  & 0\\
+                    -1 & 0 & 1
+                \end{pmatrix}    
+                $. Тогда $
+                \begin{pmatrix}
+                    x\\
+                    y\\
+                    z \\
+                \end{pmatrix} = C \cdot 
+                \begin{pmatrix}
+                    x^\prime\\
+                    y^\prime\\
+                    z^\prime \\
+                \end{pmatrix} = 
+                \begin{pmatrix}
+                    \nicefrac14 & 0  & 0\\
+                    \nicefrac13 & \nicefrac13  & 0\\
+                    -1 & 0 & 1
+                \end{pmatrix} \cdot 
+                \begin{pmatrix}
+                    x^\prime\\
+                    y^\prime\\
+                    z^\prime \\
+                \end{pmatrix} = 
+                \begin{pmatrix}
+                    \nicefrac14 \cdot x^\prime\\
+                    \nicefrac13 \cdot x^\prime + \nicefrac13 \cdot y^\prime\\
+                    -x^\prime + z^\prime \\
+                \end{pmatrix}
+                $ 
+                
+                Проверочка, что все с нужной стороны умножается: было --- $e^\prime = e \cdot C$. 
+                Выводим для координат: \begin{multline*}v = e \cdot x = e^\prime x^\prime = e \cdot C \cdot x^\prime 
+                \Rightarrow x = C \cdot x^\prime \\\end{multline*}
+            \end{enumerate}
+
+            \textbf{Ответ:} нормальный вид: $Q(e^\prime) = -{x^\prime}^2 + {y^\prime}^2 + {z^\prime}^2$
+
+            Невырожденная замена: 
+            $\eq{
+                x = \nicefrac14 \cdot x^\prime \\
+                y = \nicefrac13 \cdot x^\prime + \nicefrac13 \cdot y^\prime \\
+                z = -x^\prime + z^\prime
+            }
+            $
 
         \end{proof}
 
@@ -850,8 +1079,215 @@
         Найдите базис пространства $\RR^4$, в котором матрица оператора $\varphi$ 
         имеет жорданову форму и укажите эту жорданову форму.
         \begin{proof}[Решение.] \ 
-            
+            \begin{enumerate}
+                \item Для начала определим собственные значения на диагонали, 
+                посчитав характеристический многочлен
 
+                \begin{multline*} 
+                \chi_{A} = 
+                 \begin{vmatrix}
+                    3-t & 1 & 0 & -2 \\
+                    0 & 1-t & 0 & -5\\
+                    6 & 4 & 3-t & -5 \\
+                    0 & -1 & 0 & 5-t \\
+                 \end{vmatrix} = (3-t)
+                 \begin{vmatrix}
+                    3-t & 1 & -2 \\
+                    0 & 1-t & -5\\
+                    0 & -1  & 5-t \\
+                 \end{vmatrix} =
+                 (3 - t)^2
+                 \begin{vmatrix}
+                    1-t & -5\\
+                    -1  & 5-t \\
+                 \end{vmatrix} = \\ =
+                 (3 - t)^2 ((1 - t)(5-t) + 4) = (3 - t)^2 (5 + t^2 -5t - t + 4) = (3 - t)^4
+                \end{multline*}
+                Получаем, что собственное значение только одно, $\lambda = 3$. 
+                \item Найдем $V_\lambda(\varphi)$. Пусть $B = (A - \lambda E)$. Тогда $\dim V_\lambda = n - \text{rk}B$ 
+                --- число жордановых клеток. Если вспомнить про обозначение $d_i = \dim Ker(\varphi - \lambda \cdot Id)^i$, 
+                то сейчас мы в точности ищем $d_1$. Ну и заодно базис $\text{Ker} B$.
+                \begin{multline*}
+                    \begin{pmatrix}
+                        0 & 1 & 0 & -2 \\
+                        0 & -2 & 0 & -5\\
+                        6 & 4 & 0 & -5 \\
+                        0 & -1 & 0 & 2 \\
+                    \end{pmatrix} \to 
+                    \begin{pmatrix}
+                        6 & 4 & 0 & -5 \\
+                        0 & 1 & 0 & -2 \\
+                    \end{pmatrix}
+                    \to 
+                    \begin{pmatrix}
+                        6 & 0 & 0 & 3 \\
+                        0 & 1 & 0 & -2 \\
+                    \end{pmatrix}
+                    \to 
+                    \begin{pmatrix}
+                        2 & 0 & 0 & 1 \\
+                        0 & 1 & 0 & -2 \\
+                    \end{pmatrix} 
+                     \Rightarrow
+                    \text{ФСР: }
+                    v_1 = \begin{pmatrix}
+                        -1\\
+                        4\\
+                        0\\
+                        2
+                    \end{pmatrix}, v_2 = 
+                    \begin{pmatrix}
+                        0\\
+                        0\\
+                        1\\
+                        0
+                    \end{pmatrix}\\
+                \end{multline*}
+                Получаем, что количество жордановых клеток равно 2.
+                \item А еще знаем, что количество клеток размера k вычисляется по формуле 
+                $2d_k - d_{k- 1} - d_{k + 1}$. Надо бы найти $d_2$, 
+                чтобы понять сколько клеток размера 1 будет (тк надо решить --- клетки $2 \times 2$ и $2 \times 2$ или клетки 
+                $1 \times 1$ и $3 \times 3$).
+                Для этого посчитаем $B^2$. (Именно B, не A!)
+                $$
+                B^2 = 
+                \begin{pmatrix}
+                    0 & 1 & 0 & -2 \\
+                    0 & -2 & 0 & -5\\
+                    6 & 4 & 0 & -5 \\
+                    0 & -1 & 0 & 2 \\
+                \end{pmatrix}
+                \cdot 
+                \begin{pmatrix}
+                    0 & 1 & 0 & -2 \\
+                    0 & -2 & 0 & -5\\
+                    6 & 4 & 0 & -5 \\
+                    0 & -1 & 0 & 2 \\
+                \end{pmatrix}
+                = 
+                \begin{pmatrix}
+                    0 & 0 & 0 & 0 \\
+                    0 & 0 & 0 & 0 \\
+                    0 & 3 & 0 & -6 \\
+                    0 & 0 & 0 & 0 \\
+                \end{pmatrix} \to 
+                \begin{pmatrix}
+                    0 & 3 & 0 & -6 \\
+                \end{pmatrix}
+                \Rightarrow d_2 = 3$$
+                Итого клеток размера 1: $2 \cdot 2 - 3 = 1$ ($d_0$ полагаем нулем). 
+                $\Rightarrow$ ЖНФ: $A^\prime = 
+                \begin{pmatrix}
+                    3 & 1 & 0 & 0 \\
+                    0 & 3 & 1 & 0 \\
+                    0 & 0 & 3 & 0 \\
+                    0 & 0 & 0 & 3 \\
+                \end{pmatrix}$
+                \item Теперь ищем базис f. Нам нужен вектор высоты 3. Вообще его надо было бы искать в 
+                Ker $B^3$, но так как у нас корневое подпространство --- все пространство, но поищем 
+                в стандартном базисе.
+                Порадуемся моей интуиции и возьмем $f_3$ = $e_2 = 
+                \begin{pmatrix}
+                    0\\
+                    1\\
+                    0\\
+                    0
+                \end{pmatrix}$.
+                Проверим, что высота и правда 3. 
+                $$f_2 = Bf_3 = 
+                \begin{pmatrix}
+                    0 & 1 & 0 & -2 \\
+                    0 & -2 & 0 & -5\\
+                    6 & 4 & 0 & -5 \\
+                    0 & -1 & 0 & 2 \\
+                \end{pmatrix}
+                \begin{pmatrix}
+                    0\\
+                    1\\
+                    0\\
+                    0
+                \end{pmatrix} =
+                \begin{pmatrix}
+                    1\\
+                    -2\\
+                    4\\
+                    -1
+                \end{pmatrix}
+                \text{  -- все ок, вектор не обнулился}
+                $$
+                $$f_1 = B^2f_3 = 
+                \begin{pmatrix}
+                    0 & 0 & 0 & 0 \\
+                    0 & 0 & 0 & 0 \\
+                    0 & 3 & 0 & -6 \\
+                    0 & 0 & 0 & 0 \\
+                \end{pmatrix}
+                \begin{pmatrix}
+                    0\\
+                    1\\
+                    0\\
+                    0
+                \end{pmatrix} =
+                \begin{pmatrix}
+                    0\\
+                    0\\
+                    3\\
+                    0
+                \end{pmatrix}
+                \text{  -- все ок, вектор не обнулился}
+                $$ 
+                Получается, то высота $f_3$ и правда равна 3. (Если 
+                ли бы у меня не вышло с первого раза подобрать я бы пошла 
+                дальше проверять векторы из стандартного базиса / Ker $B^i$.)
+                \item Осталось определить $f_4$. его надо выбрать так, чтобы $f_4 \in \text{Ker} B$ 
+                и дополнял $f_1$ до базиса этого подпространства. 
+                Можно сделать это строго по алгоритму дополнения вектора до базиса подпространства, 
+                а можно просто посмотреть на базис Ker B, который мы нашли в пункте 2 увидеть, что 
+                $f_1$ линейно выражается через $v_2 (f_1= 3v_2)$, а значит можно взять $f_4 = v_1 = 
+                \begin{pmatrix}
+                    -1\\
+                    4\\
+                    0\\
+                    2
+                \end{pmatrix}$
+                \item Осталось проверить, что мы действительно получили базис. 
+                (Сделайте этот сами, умоляю. \textbf{А если не сделаете, баллы снимут.})
+            \end{enumerate}
+
+            \textbf{Ответ:} ЖНФ: $A^\prime = 
+            \begin{pmatrix}
+                3 & 1 & 0 & 0 \\
+                0 & 3 & 1 & 0 \\
+                0 & 0 & 3 & 0 \\
+                0 & 0 & 0 & 3 \\
+            \end{pmatrix}$
+
+            Базис: ($f_1, f_2, f_3, f_4$) = $
+            \begin{pmatrix}
+                0\\
+                0\\
+                3\\
+                0
+            \end{pmatrix}, 
+            \begin{pmatrix}
+                1\\
+                -2\\
+                4\\
+                -1
+            \end{pmatrix}, 
+            \begin{pmatrix}
+                0\\
+                1\\
+                0\\
+                0
+            \end{pmatrix}, 
+            \begin{pmatrix}
+                -1\\
+                4\\
+                0\\
+                2
+            \end{pmatrix}
+            $
         \end{proof}
       
 \end{document}
